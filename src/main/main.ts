@@ -135,11 +135,11 @@ ipcMain.on('submit-email', async (_event, arg) => {
   // 身份认证
   try {
     transporter = nodemailer.createTransport({
-      host: 'smtp.iie.ac.cn', //SMTP
-      port: '25', // 端口
-      secure: false, // 使用 SSL
+      host: 'smtp.mail.qq.com', //SMTP
+      port: '465', // 端口
+      secure: true, // 使用 SSL
       requireTLC: true,
-      tls: { servername: 'cstnet.cn' },
+      tls: { servername: 'qq.com' },
       auth: {
         user: arg.email, //用户名，你的邮箱地址
         pass: arg.password, //授权码
@@ -155,7 +155,7 @@ ipcMain.on('submit-email', async (_event, arg) => {
           _event.reply('email-process', logInfo('身份认证通过'));
           _event.reply(
             'email-process',
-            logInfo('发件服务器连接成功 smtp.iie.ac.cn:25 ')
+            logInfo('发件服务器连接成功  smtp.exmail.qq.com:465 ')
           );
         }
       });
